@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>QA Scout | Your next chapter</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <aside>
+      <a class="brand" href="#"
+        >◈ <b>qa scout<span>CAREER WORKSPACE</span></b></a
+      >
+      <div class="workspace">SRINU'S WORKSPACE</div>
+      <button class="nav active" data-view="all">
+        ▦ &nbsp; Discover openings <em id="total"></em></button
+      ><button class="nav" data-view="saved">
+        ♡ &nbsp; Saved jobs <em id="savedCount">0</em></button
+      ><button class="nav" data-view="applied">
+        ✓ &nbsp; Applications <em id="appliedCount">0</em>
+      </button>
+      <div class="profile">
+        <span class="eyebrow">YOUR SEARCH PROFILE</span>
+        <h3>QA Engineer · Fresher</h3>
+        <p>Manual Testing<br />SQL · Java · Python<br />Playwright learner</p>
+        <span class="green">● No full-time experience required</span>
+      </div>
+      <div class="person">
+        <div class="avatar">SM</div>
+        <div>Srinu Mannimala<small>Building your next chapter</small></div>
+      </div>
+    </aside>
+    <main>
+      <header>
+        <span>Job search <span class="slash">/</span> Weekly shortlist</span
+        ><span class="private">♧ Private workspace</span>
+      </header>
+      <section class="intro">
+        <div>
+          <div class="eyebrow">YOUR NEXT CHAPTER STARTS HERE</div>
+          <h1>Good opportunities.<br /><i>A clearer next step.</i></h1>
+          <p>
+            A focused shortlist for your first role in software testing.<br />Less
+            scrolling. More applications that make sense.
+          </p>
+        </div>
+        <div class="week">
+          <span>THIS WEEK'S EDITION</span><strong>16 — 22 Nov</strong
+          ><small>2026 · India</small>
+          <div>● Research checked 18 Nov 2026</div>
+        </div>
+      </section>
+      <section class="stats">
+        <div>
+          <small>SHORTLISTED OPENINGS</small
+          ><strong id="statTotal">5 <span>fresher-friendly leads</span></strong>
+        </div>
+        <div>
+          <small>YOUR SAVED JOBS</small><strong id="statSaved">0</strong>
+        </div>
+        <div>
+          <small>APPLICATIONS TRACKED</small><strong id="statApplied">0</strong>
+        </div>
+      </section>
+      <div class="section-heading">
+        <div>
+          <h2>Your opportunity board <span id="count"></span></h2>
+          <p>
+            Selected for your skills. Screened for zero required experience.
+          </p>
+        </div>
+        <button id="add" class="primary">＋ Add opening</button>
+      </div>
+      <section class="filters">
+        <label class="search"
+          >⌕ <input id="search" placeholder="Search role, company or keyword"
+        /></label>
+        <div class="filter-row">
+          <label
+            >Company<select id="company">
+              <option value="">All companies</option>
+            </select></label
+          ><label
+            >Location<select id="location">
+              <option value="">All locations</option>
+            </select></label
+          ><label
+            >Posting date<select id="date">
+              <option value="">Any date</option>
+              <option value="7">Last 7 days</option>
+              <option value="30">Last 30 days</option>
+              <option value="unknown">Date not disclosed</option>
+            </select></label
+          ><label
+            >Required skill<select id="skill">
+              <option value="">Any skill</option>
+              <option>Manual Testing</option>
+              <option>SQL</option>
+              <option>Java</option>
+              <option>Python</option>
+              <option>Playwright</option>
+            </select></label
+          ><label
+            >Fresher eligibility<select id="eligibility">
+              <option value="">All eligible</option>
+              <option>Fresher</option>
+              <option>0–1 years</option>
+              <option>Internship</option>
+            </select></label
+          ><button id="reset">Reset filters</button>
+        </div>
+      </section>
+      <div class="results-head">
+        <span id="resultText"></span
+        ><label
+          >Sort by
+          <select id="sort">
+            <option value="fit">Best fit first</option>
+            <option value="new">Newest posted</option>
+          </select></label
+        >
+      </div>
+      <div id="jobs"></div>
+      <section class="note">
+        <b>✓ A shortlist you can trust, with the details to check.</b>
+        <p>
+          Roles requiring 1+ years are excluded. Employer-confirmed and
+          job-board leads are labeled separately. Posting dates are never
+          replaced by discovery dates. Availability can change; check the
+          application page before applying.
+        </p>
+      </section>
+      <footer>
+        <span>Curated for Srinu · Manual Testing / QA Engineer</span>
+        <div>
+          <button id="export">Export backup</button
+          ><button id="import">Import openings</button
+          ><input hidden type="file" id="file" accept="application/json" />
+        </div>
+      </footer>
+      <p class="storage">
+        Saves, application status and added jobs stay in this browser. Export a
+        backup to move them between devices. This is a researched snapshot;
+        automatic weekly refresh is not enabled.
+      </p>
+    </main>
+    <dialog id="dialog">
+      <form id="form">
+        <div class="modal-head">
+          <h2>Add an opening</h2>
+          <button type="button" id="close">✕</button>
+        </div>
+        <p>Add a checked fresher role to your local board.</p>
+        <label>Role<input name="title" required maxlength="150" /></label
+        ><label>Company<input name="company" required maxlength="100" /></label
+        ><label
+          >Location<input name="location" required maxlength="100" /></label
+        ><label>Posting date (optional)<input type="date" name="date" /></label
+        ><label
+          >Application URL<input
+            name="url"
+            type="url"
+            required
+            placeholder="https://..." /></label
+        ><label
+          >Required skills (comma separated)<input
+            name="skills"
+            required
+            placeholder="Manual Testing, SQL" /></label
+        ><label
+          >Fit reason<textarea
+            name="fit"
+            required
+            maxlength="600"
+          ></textarea></label
+        ><label
+          >Eligibility<select name="eligibility">
+            <option>Fresher</option>
+            <option>0–1 years</option>
+            <option>Internship</option>
+          </select></label
+        ><label class="check"
+          ><input type="checkbox" required /> I checked: no previous full-time
+          experience is required.</label
+        ><button class="primary">Add to board</button>
+      </form>
+    </dialog>
+    <div id="toast" role="status"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
